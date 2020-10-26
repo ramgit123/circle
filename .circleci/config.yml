@@ -18,7 +18,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle 
-          key: app-dependencies-{{ checksum "build.gradle" }}
+          key: app-dependencies
       - save_cache:
           key: v1-myapp-cache
           paths:

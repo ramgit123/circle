@@ -9,7 +9,7 @@ jobs:
       TERM: dumb
     steps:
       - checkout 
-      -run: gradle clean build
+      -run: gradle build
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}         

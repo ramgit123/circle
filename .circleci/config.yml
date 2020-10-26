@@ -18,7 +18,7 @@ jobs:
       - run: gradle dependencies
       - save_cache:
           paths:
-            - ~/.gradle      
-          key: build.gradle
+            - ~/src      
+          key: app-dependencies-{{ checksum "build.gradle" }}           
       - run: gradle test
      

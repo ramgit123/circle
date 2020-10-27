@@ -47,10 +47,7 @@ jobs:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
     steps:
-      - checkout
-     m
-   
-      
+      - checkout  
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}         

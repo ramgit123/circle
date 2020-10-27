@@ -3,7 +3,7 @@ jobs:
   build:
     docker:      
       - image: circleci/openjdk:8-jdk
-    working_directory: ~/tmp
+    working_directory: /tmp
     environment:
       JVM_OPTS: -Xmx3200m
       TERM: dumb

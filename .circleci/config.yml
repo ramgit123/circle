@@ -27,7 +27,7 @@ jobs:
     steps:
       - checkout 
       - run: gradle build
-       restore_cache:
+      -  restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}         
             - v1-dependencies-
@@ -44,7 +44,7 @@ jobs:
     steps:
       - checkout 
       - run: gradle build
-       restore_cache:
+      - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}         
             - v1-dependencies-

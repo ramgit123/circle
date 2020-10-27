@@ -11,6 +11,14 @@ jobs:
       - checkout
       - run: mkdir -p workspace
       - run: echo "Hello, world!" > workspace/echo-output
+      
+     
+      - persist_to_workspace:
+          
+          root: workspace
+         
+          paths:
+            - echo-output
      
       - run: gradle build
       - restore_cache:
@@ -47,7 +55,12 @@ jobs:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
     steps:
-      - checkout  
+      - checkout 
+      - attach_workspace:
+          
+          at: /tmp/workspace
+      - run: cat /tmp/workspace/echo-output    
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}         
@@ -64,5 +77,10 @@ workflows:
   commit:
     jobs:
       - build
-      - test
+      - test:
+        requires:
+         - build
+       
+        
+        
       

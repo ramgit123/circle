@@ -53,6 +53,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/repo/workspace/
+      - run: cd /workspace    
       
       - restore_cache:
           keys:

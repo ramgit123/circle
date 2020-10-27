@@ -62,15 +62,5 @@ workflows:
   commit:
     jobs:
       - build
-  nightly:
-    triggers:
-      - schedule:
-          cron: "* * * * *"
-          filters:
-            branches:
-              only:
-                - circleci-project-setup
-          
-    jobs:            
       - test
       

@@ -64,12 +64,10 @@ workflows:
           requires:
             - build
       - hold:
-          approval:
+          type: approval
           requires:
             - build
             - test
       - deploy:
-          requies:
+          requires:
             - hold
-      
-     

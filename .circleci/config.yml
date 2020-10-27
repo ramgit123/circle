@@ -67,6 +67,5 @@ workflows:
     triggers:
       - schedule:
           cron: "* * * * *"
-   jobs:
-      - build
-      - test
+    jobs:
+      - coverage

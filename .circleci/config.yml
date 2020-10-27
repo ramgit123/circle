@@ -36,7 +36,37 @@ jobs:
 
       - store_artifacts:
           path: /tmp/artifacts
-          
+  test:
+    docker:      
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+    steps:
+      - checkout
+      - run: gradle build
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}         
+            - v1-dependencies-
+      - run: gradle dependencies
+      - save_cache:
+          paths:
+            - ~/.gradle 
+           
+          key: app-dependencies-{{ checksum "build.gradle" }}        
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
           
       
 

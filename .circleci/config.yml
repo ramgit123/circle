@@ -61,11 +61,11 @@ workflows:
   version: 2
   commit:
     jobs:
-      - test
-      - deploy
-  nightly:
+      - build
+  schedule:
     triggers:
       - schedule:
           cron: "* * * * *"
     jobs:
-      - coverage
+      - test
+      

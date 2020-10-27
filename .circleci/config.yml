@@ -50,7 +50,7 @@ jobs:
       TERM: dumb
     steps:
       - checkout
-       - attach_workspace:
+      - attach_workspace:
           at: /tmp/workspace
       
       - run: cat /tmp/workspace/echo-output

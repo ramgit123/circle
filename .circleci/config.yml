@@ -3,12 +3,18 @@ jobs:
   build:
     docker:      
       - image: circleci/openjdk:8-jdk
-    working_directory: ~/repo
+    working_directory: ~/tmp
     environment:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
     steps:
       - checkout
+      - run: mkdir -p workspace
+      - run: echo "Hello, world!" > workspace/echo-output
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - echo-output
       - run: gradle build
       - restore_cache:
           keys:
@@ -39,13 +45,15 @@ jobs:
   test:
     docker:      
       - image: circleci/openjdk:8-jdk
-    working_directory: ~/repo
     environment:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
     steps:
       - checkout
-      - run: gradle build
+       - attach_workspace:
+          at: /tmp/workspace
+      
+      - run: cat /tmp/workspace/echo-output
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}         

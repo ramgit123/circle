@@ -21,4 +21,18 @@ jobs:
             - ~/.gradle      
           key: app-dependencies-{{ checksum "build.gradle" }}           
       - run: gradle test
+  test:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout 
+      - run: gradle build
+      - run: echo "test job"
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test      
+      
      

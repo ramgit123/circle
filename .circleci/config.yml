@@ -65,7 +65,7 @@ workflows:
             - build
           filters:
             branches:
-              only: circleci-project-setup
+              only: master
       - hold:
           type: approval
           requires:

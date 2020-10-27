@@ -3,7 +3,7 @@ jobs:
   build:
     docker:      
       - image: circleci/openjdk:8-jdk
-    working_directory: ~/tmp
+    working_directory: ~/repo
     environment:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
@@ -51,9 +51,9 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/tmp/workspace/
+          at: /repo/workspace/
       - run: |
-          if [[ `cat ~/tmp/workspace/echo-output` == "Hello, world!" ]]; then
+          if [[ `cat /repo/workspace/echo-output` == "Hello, world!" ]]; then
             echo "It worked!";
           else
             echo "Nope!"; exit 1

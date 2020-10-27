@@ -12,7 +12,7 @@ jobs:
       - run: mkdir -p workspace
       - run: echo "Hello, world!" > workspace/echo-output
       - persist_to_workspace:
-          root: workspace
+          root: /repo/workspace
           paths:
             - echo-output
       - run: gradle build

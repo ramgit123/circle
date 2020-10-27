@@ -11,10 +11,7 @@ jobs:
       - checkout
       - run: mkdir -p workspace
       - run: echo "Hello, world!" > workspace/echo-output
-      - persist_to_workspace:
-          root: /repo/workspace
-          paths:
-            - echo-output
+     
       - run: gradle build
       - restore_cache:
           keys:
@@ -51,8 +48,7 @@ jobs:
       TERM: dumb
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/repo/workspace/
+     m
    
       
       - restore_cache:

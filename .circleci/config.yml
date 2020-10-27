@@ -52,12 +52,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/repo/workspace/
-      - run: |
-          if [[ `cat ~/repo/workspace/echo-output` == "Hello, world!" ]]; then
-            echo "It worked!";
-          else
-            echo "Nope!"; exit 1
-          fi
+      
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}         

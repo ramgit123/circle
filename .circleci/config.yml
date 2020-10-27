@@ -67,9 +67,11 @@ workflows:
             - build
           filters:
             branches:
-              only: circleci-project-setup
-          
-      
+              only: circleci-project-setup         
+  nightly:
+    triggers:
+      - schedule:
+          cron: "* * * * *"    
 
       
      

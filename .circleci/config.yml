@@ -58,8 +58,8 @@ jobs:
       - checkout 
       - attach_workspace:
           
-          at: /tmp/workspace
-      - run: cat /tmp/workspace/echo-output    
+          at: /workspace
+      - run: cat /workspace/echo-output    
 
       - restore_cache:
           keys:

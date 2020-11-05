@@ -49,10 +49,7 @@ jobs:
             - v1-dependencies-{{ checksum "build.gradle" }}         
             - v1-dependencies-
       - run: gradle dependencies
-      - save_cache:
-          paths:
-            - ~/.gradle      
-          key: app-dependencies-{{ checksum "build.gradle" }}           
+          
       - run: gradle test
       - run: echo "deploy job"    
 workflows:

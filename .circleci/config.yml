@@ -63,7 +63,7 @@ workflows:
           filters:
             branches:
               only: 
-                  - master
+                  
                   - circleci-project-setup
       - hold:
           type: approval
